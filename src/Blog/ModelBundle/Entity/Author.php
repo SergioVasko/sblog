@@ -6,12 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Post
+ * Author
  *
  * @ORM\Table()
- * @ORM\Entity
  */
-class Post
+class Author
 {
     /**
      * @var integer
@@ -25,33 +24,26 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=150)
+     * @ORM\Column(name="name", type="string", length=100)
      * @Assert\NotBlank()
      */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="body", type="text")
-     */
-    private $body;
+    private $name;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
-     * @Assert\NotBlank()
      */
     private $createdAt;
 
     /**
-     * Post constructor.
+     * Author constructor.
      */
     public function __construct()
     {
         $this->createdAt = \DateTime();
     }
+
 
     /**
      * Get id
@@ -64,56 +56,33 @@ class Post
     }
 
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
-     * @return Post
+     * @param string $name
+     * @return Author
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
-    }
-
-    /**
-     * Set body
-     *
-     * @param string $body
-     * @return Post
-     */
-    public function setBody($body)
-    {
-        $this->body = $body;
-
-        return $this;
-    }
-
-    /**
-     * Get body
-     *
-     * @return string
-     */
-    public function getBody()
-    {
-        return $this->body;
+        return $this->name;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Post
+     * @return Author
      */
     public function setCreatedAt($createdAt)
     {
