@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Post
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
  */
-class Post
+class Post extends AbstractTimestampable
 {
     /**
      * @var integer
@@ -38,20 +38,13 @@ class Post
     private $body;
 
     /**
-     * @var \DateTime
+     * @var Author
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\ManyToOne(targetEntity="Author", inversedBy="posts")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
-    private $createdAt;
-
-    /**
-     * Post constructor.
-     */
-    public function __construct()
-    {
-        $this->createdAt = \DateTime();
-    }
+    private $author;
 
     /**
      * Get id
@@ -110,25 +103,25 @@ class Post
     }
 
     /**
-     * Set createdAt
+     * Set author
      *
-     * @param \DateTime $createdAt
+     * @param Author $author
      * @return Post
      */
-    public function setCreatedAt($createdAt)
+    public function setAuthor(Author $author)
     {
-        $this->createdAt = $createdAt;
+        $this->author = $author;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get author
      *
-     * @return \DateTime
+     * @return Author
      */
-    public function getCreatedAt()
+    public function getAuthor()
     {
-        return $this->createdAt;
+        return $this->author;
     }
 }

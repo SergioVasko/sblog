@@ -2,6 +2,7 @@
 
 namespace Blog\ModelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,8 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Author
  *
  * @ORM\Table()
+ * @ORM\Entity()
  */
-class Author
+class Author extends AbstractTimestampable
 {
     /**
      * @var integer
@@ -30,20 +32,19 @@ class Author
     private $name;
 
     /**
-     * @var \DateTime
+     * @var ArrayCollection
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author", cascade={"remove"})
      */
-    private $createdAt;
+    private $posts;
 
     /**
-     * Author constructor.
+     * Constructor
      */
     public function __construct()
     {
-        $this->createdAt = \DateTime();
+        $this->posts = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -53,6 +54,16 @@ class Author
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -69,35 +80,35 @@ class Author
     }
 
     /**
-     * Get name
+     * Add posts
      *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
+     * @param Post $posts
      * @return Author
      */
-    public function setCreatedAt($createdAt)
+    public function addPost(Post $posts)
     {
-        $this->createdAt = $createdAt;
+        $this->posts[] = $posts;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Remove posts
      *
-     * @return \DateTime
+     * @param Post $posts
      */
-    public function getCreatedAt()
+    public function removePost(Post $posts)
     {
-        return $this->createdAt;
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
