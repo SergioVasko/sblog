@@ -24,7 +24,7 @@ abstract class AbstractTimestampable
      */
     public function __construct()
     {
-        $this->createdAt = \DateTime();
+        $this->createdAt = new \DateTime();
     }
 
     /**
