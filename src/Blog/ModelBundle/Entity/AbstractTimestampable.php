@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Timestampable abstract class to define created behavior
+ * Timestampable abstract class to define created and updated behavior
  * @package Blog\ModelBundle\Entity
  *
  * @ORM\MappedSuperclass
@@ -22,10 +22,18 @@ abstract class AbstractTimestampable
     private $createdAt;
 
     /**
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Author
+     * @return AbstractTimestampable
      */
     public function setCreatedAt($createdAt)
     {
@@ -42,5 +50,28 @@ abstract class AbstractTimestampable
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return AbstractTimestampable
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
