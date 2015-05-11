@@ -6,3 +6,4 @@ read.more: Read more
 post:
   plural: Posts
   on: Posted on
+  latest: 'Latest posts'
