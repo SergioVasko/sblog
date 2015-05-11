@@ -4,6 +4,7 @@ namespace Blog\ModelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Getmo;
 
 /**
  * Post
@@ -21,6 +22,14 @@ class Post extends AbstractTimestampable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @Getmo\Slug(fields={"title"}, unique=false)
+     * @ORM\Column(length=255)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -57,6 +66,16 @@ class Post extends AbstractTimestampable
     }
 
     /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -70,13 +89,13 @@ class Post extends AbstractTimestampable
     }
 
     /**
-     * Get title
+     * Get body
      *
      * @return string
      */
-    public function getTitle()
+    public function getBody()
     {
-        return $this->title;
+        return $this->body;
     }
 
     /**
@@ -93,13 +112,13 @@ class Post extends AbstractTimestampable
     }
 
     /**
-     * Get body
+     * Get author
      *
-     * @return string
+     * @return Author
      */
-    public function getBody()
+    public function getAuthor()
     {
-        return $this->body;
+        return $this->author;
     }
 
     /**
@@ -116,12 +135,25 @@ class Post extends AbstractTimestampable
     }
 
     /**
-     * Get author
+     * Get slug
      *
-     * @return Author
+     * @return string
      */
-    public function getAuthor()
+    public function getSlug()
     {
-        return $this->author;
+        return $this->slug;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Post
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }
