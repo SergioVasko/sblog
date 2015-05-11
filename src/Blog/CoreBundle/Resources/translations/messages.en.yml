@@ -2,8 +2,11 @@ home: Home
 
 by: by
 read.more: Read more
+author: Author
 
 post:
   plural: Posts
   on: Posted on
-  latest: 'Latest posts'
+  latest: Latest posts
+  by:
+    author: Posted by author
