@@ -18,13 +18,14 @@ class AuthorController extends Controller
      * @param string $slug
      *
      * @throws NotFoundHttpException
+     * @return array
      *
      * @Route("/author/{slug}")
      * @Template()
      */
     public function showAction($slug)
     {
-        $author = getDoctrine()->getRepository('ModelBundle:Author')->findOneBy(
+        $author = $this->getDoctrine()->getRepository('ModelBundle:Author')->findOneBy(
             array(
                 'slug' => $slug,
             )

@@ -6,7 +6,9 @@ author: Author
 
 post:
   plural: Posts
-  on: Posted on
   latest: Latest posts
-  by:
-    author: Posted by author
+  on: Posted on
+  by: Posts by
+  by.author: Posts by %name%
+
+author.empty.posts: This autor did not write any post yet.
