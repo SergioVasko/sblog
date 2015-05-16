@@ -31,6 +31,9 @@ section {
     margin: 10px;
     width: 65%;
 }
+article {
+    text-align: justify;
+}
 article header {
     background-color: transparent;
     padding-left: 0;
@@ -49,6 +52,12 @@ article header h2 a {
 article header p {
     font-size: 14px;
     margin: 0;
+}
+article.post {
+    margin-bottom: 50px;
+}
+article.comment {
+    margin-top: 0;
 }
 aside {
     float: right;
@@ -79,4 +88,24 @@ a:hover,
 a:active {
     color: #4f6e9f;
     text-decoration: underline;
+}
+p.session-message {
+    padding: 5px;
+    background-color: #007b00;
+    color: #fff;
+}
+form label {
+    display: block;
+    font-style: italic;
+}
+form input {
+    width: 300px;
+}
+form textarea {
+    width: 500px;
+    height: 150px;
+}
+form ul li {
+    list-style-type: none;
+    color: #ff0000;
 }

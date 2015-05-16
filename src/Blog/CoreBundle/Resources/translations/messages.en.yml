@@ -1,8 +1,10 @@
 home: Home
 
+on: on
 by: by
 read.more: Read more
-author: Author
+name: Name
+send: Send
 
 post:
   plural: Posts
@@ -10,5 +12,13 @@ post:
   on: Posted on
   by: Posts by
   by.author: Posts by %name%
+  comments: '{0} No comments|{1} %count% coment|]1,Inf] %count% coments'
 
-author.empty.posts: This autor did not write any post yet.
+comment:
+  singular: Comment
+  plural: Comments
+  write: Write comment
+
+author:
+  title: Author
+  empty.posts: This autor did not write any post yet.
