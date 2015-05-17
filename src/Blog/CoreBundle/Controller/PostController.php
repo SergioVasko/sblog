@@ -72,6 +72,8 @@ class PostController extends Controller
      * @param Request $request
      * @param string  $slug
      *
+     * @throws NotFoundHttpException
+     *
      * @return array
      *
      * @Route("/{slug}/create-comment")
