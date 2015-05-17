@@ -49,8 +49,6 @@ class AuthorManager
      *
      * @param Author $author
      *
-     * @throws NotFoundHttpException
-     *
      * @return array|\Blog\ModelBundle\Entity\Post[]
      */
     public function findPosts(Author $author)
@@ -58,10 +56,6 @@ class AuthorManager
         $posts = $this->em->getRepository('ModelBundle:Post')->findBy(
             array('author' => $author)
         );
-
-        if (null === $posts) {
-            throw new NotFoundHttpException('Posts was not found');
-        }
 
         return $posts;
     }
