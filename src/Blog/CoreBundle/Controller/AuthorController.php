@@ -6,7 +6,6 @@ use Blog\CoreBundle\Services\AuthorManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class AuthorController
@@ -18,7 +17,6 @@ class AuthorController extends Controller
      *
      * @param string $slug
      *
-     * @throws NotFoundHttpException
      * @return array
      *
      * @Route("/author/{slug}")
