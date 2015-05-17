@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PostController
+ *
+ * @Route("/{_locale}", requirements={"_locale"="en|ru"}, defaults={"en"})
  */
 class PostController extends Controller
 {
