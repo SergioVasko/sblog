@@ -143,4 +143,12 @@ class Author extends AbstractTimestampable
     {
         return $this->posts;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

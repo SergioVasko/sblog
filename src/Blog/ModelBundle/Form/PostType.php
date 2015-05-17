@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class AuthorType
+ * Class PostType
  */
-class AuthorType extends AbstractType
+class PostType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,9 @@ class AuthorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name');
+            ->add('title')
+            ->add('body')
+            ->add('author');
     }
 
     /**
@@ -27,7 +29,7 @@ class AuthorType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Blog\ModelBundle\Entity\Author',
+                'data_class' => 'Blog\ModelBundle\Entity\Post',
             )
         );
     }
@@ -37,6 +39,6 @@ class AuthorType extends AbstractType
      */
     public function getName()
     {
-        return 'blog_modelbundle_author';
+        return 'blog_modelbundle_post';
     }
 }
